@@ -1,4 +1,4 @@
-var trainBlocks = 3;
+var trainBlocks = 2;
 var testBlocks = 3;
 
 var numFlowers = 27;
@@ -48,7 +48,7 @@ var round = 1;
 var lastBlock = 1;
 
 //preload images for *speed*
-$(allImgs.map(function(elem){return "images"/+elem+".jpg";})).preload();
+$(allImgs.map(function(elem){return "images/"+elem+".jpg";})).preload();
 
 //var startTime = 0;
 
@@ -113,7 +113,7 @@ var experiment = {
 			setTimeout(showSlide("testInstructions",500));
 		}
 
-		// Take a break between blcoks
+		// Take a break between blocks
 		else if(showBreak) {
 			showBreak = 0;
 			setTimeout(showSlide("break",500));
@@ -126,16 +126,21 @@ var experiment = {
 	// Collect Data
 	record: function() {
 
-		  data = {
-				  trialNum: trialNum,
-				  image: trim(document.getElementById('test_pic').children[0].src),
-				  response: document.getElementById('response').value,
-				  //rt: endTime - startTime
-		  };
-		  experiment.data.push(data);
+			var response = document.getElementById('response').value;
+			if(response == "")
+				alert("Please enter a response");
+			else{
+			  data = {
+					  trialNum: trialNum,
+					  image: trim(document.getElementById('test_pic').children[0].src),
+					  response: response,
+					  //rt: endTime - startTime
+			  };
+			  experiment.data.push(data);
 
-		  document.getElementById('response').value = "";
-		  setTimeout(experiment.blank, 500);
+		  	document.getElementById('response').value = "";
+		  	setTimeout(experiment.blank, 500);
+		  }
 	},
 
 
@@ -177,7 +182,7 @@ var experiment = {
 	 		testNum = testNum + 1;
 
 	 	// Done with training. Do we go back for round 2?
-		if(trainNum >= trainTrials - 1){
+		if(trainNum > (trainTrials/2)){
 			if(round == 2) {
 				trainNum = 0;
 				testNum = 1;
@@ -190,10 +195,19 @@ var experiment = {
 			}
 		}
 		else if(testNum > testTrials[block-1]){ // Done testing
-			trainNum = 1;
+
+			//still training
+			if(block < trainBlocks) {
+				trainNum = 1;
+				round = 1;
+				testNum = 0;
+			}
+			else{ //final test
+				testNum = 1 ;
+			}
+
 			block = block + 1;
-			round = 1;
-			testNum = 0;
+
 			showBreak = 1;
 		}
 
