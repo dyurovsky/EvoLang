@@ -1,6 +1,4 @@
-import os
-
-settings = open("README", 'r')
+settings = open("experiment-settings.txt", 'r')
 lines = settings.readlines()
 settings.close()
 dict={}
@@ -22,35 +20,6 @@ for line in lines:
             while (value[-1] == "\n" or value[-1] == "\t" or value[-1] == " "):
                 value = value[:-1]
             dict[x[0]] = value
-
-if not os.path.exists(dict["locationofCLT"]) or dict["locationofCLT"][-1] == '/':
-    raise Exception("Error: check the 'locationofCLT' specification in your README file for errors.")
-
-if dict["rewriteProperties"] == "yes":
-    old_properties_file = open(dict["locationofCLT"] + "/bin/mturk.properties", 'r').readlines()
-    backup = open(dict["locationofCLT"] + "/bin/mturk.properties.backup", 'w')
-    for line in old_properties_file:
-        backup.write(line + '\n')
-    backup.close()
-    new_properties_file = open(dict["locationofCLT"] + "/bin/mturk.properties", 'w')
-    if (dict["liveHIT"] == "yes"):
-        for line in old_properties_file:
-            if "://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester" in line:
-                new_properties_file.write("# service_url=https://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester\n")
-            elif "://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester" in line:
-                 new_properties_file.write("service_url=https://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester\n")
-            else:
-                new_properties_file.write(line)
-    else:
-        for line in old_properties_file:
-            if "://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester" in line:
-                new_properties_file.write("service_url=https://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester\n")
-            elif "://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester" in line:
-                new_properties_file.write("# service_url=https://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester\n")
-            else:
-                new_properties_file.write(line)
-    new_properties_file.close()
-    print "Old mturk.properties file backed up at " + dict["locationofCLT"] + "/bin/mturk.properties.backup" 
 
 # write the .question file, which tells MTurk where to find your external HIT.
 question = open(dict["nameofexperimentfiles"] + ".question", 'w')
