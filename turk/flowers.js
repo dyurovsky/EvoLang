@@ -93,6 +93,9 @@ var experiment = {
 
 		experiment.about = $('#about')[0].value;
 		experiment.broken = $('#broken')[0].value;
+		experiment.age = $('#age')[0].value;
+		experiment.sex = $('#sex')[0].value;
+		experiment.english = $('#english')[0].value;
 
 		showSlide("finished"); //Show the finish slide.
 	  setTimeout(function() { turk.submit(experiment);}, 1500);
