@@ -6,6 +6,7 @@ var numFlowers = 27;
 //REALLY want to do this as a file read, don't know how yet
 var words = ['hopa','manehowu','wuneho','panamapo','lemipo','howu','nehowu','nemi','wunene','lipapo','poliho','maho','nehomami','powuma','wumaleli',
 'lilema','lemaho','lemilipo','lepali','lemi','nemine','pohomali','maholi','wupa','wulepami','nepa','mahomine'];
+var ratings = [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 // Random order for both images and words
 var order = shuffle(range(1,numFlowers));
