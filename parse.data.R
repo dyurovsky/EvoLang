@@ -5,6 +5,12 @@ data <- read.table("turk/flowers.results",sep="\t",header=TRUE,
 
 responses <- fromJSON(as.character(data$Answer.data))
 
+## FIXING WORD ORDER RECORDING PROBLEM
+images <- as.numeric(gsub("[^0-9]","",
+                          fromJSON(as.character(data$Answer.images))))
+
+words <- fromJSON(as.character(data$Answer.words))
+
 seen.images <- as.numeric(gsub("[^0-9]","",
                                fromJSON(as.character(data$Answer.seenImgs))))
 seen.words <- fromJSON(as.character(data$Answer.seenWords))

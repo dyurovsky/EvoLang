@@ -12,13 +12,13 @@ var order = shuffle(range(1,numFlowers));
 
 // Assign same random order to both images and words
 var allImgs = order.map(function(elem){return 'flower'+elem;});
-allWords = order.map(function(elem){return words.slice(elem-1,elem);});
+var allWords = order.map(function(elem){return words.slice(elem-1,elem);});
 
 // Split into seen and unseen sets
 var seenImgs = allImgs.slice(0,Math.ceil(allImgs.length/2));
 var seenWords = allWords.slice(0,Math.ceil(allWords.length/2));
 var unSeenImgs = allImgs.slice(Math.ceil(allImgs.length/2),allImgs.length);
-var unSeenWords = allImgs.slice(Math.ceil(allWords.length/2),allWords.length);
+var unSeenWords = allWords.slice(Math.ceil(allWords.length/2),allWords.length);
 
 // Only test half of images in first two blocks
 var seenTest = shuffle(seenImgs);
@@ -85,7 +85,7 @@ var experiment = {
   trainImgs: trainImgs,
   trainWords: trainWords,
   testTrials: testTrials,
-  words: words,
+  words: allWords,
   images: allImgs,
 
 	/*The function that gets called when the sequence is finished. */
