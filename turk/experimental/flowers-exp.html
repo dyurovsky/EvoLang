@@ -2,21 +2,21 @@
   <head>
     <title>Learning Flowers</title>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 
-    <script src="mmturkey.js"></script>
-    <script src="utils.js"></script>
+    <script src="../mmturkey.js"></script>
+    <script src="../utils.js"></script>
 
-    <link type="text/css" href ="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link type="text/css" href ="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
 
   </head>
   <body>
 
     <!--CONSENT SLIDE SLIDE-->
     <div class="slide" id="consent">
-      <img src="images/stanford.jpg" alt="Stanford University">
+      <img src="../images/stanford.jpg" alt="Stanford University">
       <p id='logo-text'>Stanford Language and Cognition Lab</p>
       <p class="block-text">In this experiment you will be learning
        words in an Alien language. Your job is to figure out which
@@ -104,12 +104,15 @@
       <table align="center" cellpadding="30">
         <tr>
           <td align="center"><div class="flower_pic" id="train_pic" style="width: 250px; height: 250px;">
-            <img  src="images/flower1.jpg"
+            <img  src="../images/flower1.jpg"
             width="250"></div></td>
         </tr>
 
         <tr><td align="center" colspan="2" id="word">Fep<br></td></tr>
-        <tr><td align="center" colspan="2" id="rating">This flower is Poisonous<br></td></tr>
+        <tr><td align="center" colspan="2">Poisonous?:
+          <input type ="radio" name="property" id="yes" onClick="this.blur(); experiment.record_train()" >Poisonous</input>
+          <input type ="radio" name="property" id="no" onClick="this.blur(); experiment.record_train()"></input>Not Poisonous<br></td></tr>
+        <tr><td align="center" colspan="2" id="feedback"><br></td></tr>
       </table>
       <br>
       <center><p>Progress:</p></center>
@@ -122,16 +125,14 @@
       <table align="center" cellpadding="30">
              <tr>
                <td align="center"><div class="flower_pic" id="test_pic">
-                 <img  src="images/flower1.jpg"
+                 <img  src="../images/flower1.jpg"
                  width="250"></div></td>
              </tr>
-        <tr><td align="center" colspan="2">Poisonous?:
-          <input type ="radio" name="rating" value="yes" onClick="" id="yes">Poisonous</input>
-          <input type ="radio" name="rating" value="no" id="no" onClick=""></input>Not Poisonous<br></td></tr>
+        <tr><td align="center" colspan="2" id="test_property">Poisonous<br></td></tr>
         <tr><td align="center" colspan="2">Name: <input id="response" type="textbox" value="" style = "width: 200px;"></input><br></td></tr>
       </table>
 
-      <center><button type="button" onClick="this.blur(); experiment.record()">Next</button></center>
+      <center><button type="button" onClick="this.blur(); experiment.record_test()">Next</button></center>
       <br>
       <center><p>Progress:</p></center>
       <center><div id="test_progressbar" style="width: 300px;"></div><center>
@@ -152,26 +153,17 @@
         <p class="block-text"><br><br>Please answer these questions to complete this HIT.</p>
         <br>
         <p>How old are you?</p>
-        <textarea id="about" rows="1" cols="10" resize="none">
+        <textarea id="age" rows="1" cols="10" resize="none">
         </textarea><br>
         <br>
-        <p> What is your sex? </p>
-        <form action="">
-        <select name="sex">
-        <option value="Female">Female</option>
-        <option value="Male">Male</option>
-        <option value="Other/Do not wish to disclose">Other</option>
-        </select>
-        </form>
+        <p> What is your sex? (male/female/other)</p>
+        <textarea id="sex" rows="1" cols="10" resize="none">
+        </textarea>
         <br>
         <br>
-        <p> Is English your native language? </p>
-        <form action="">
-        <select name="language">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-        </select>
-        </form>
+        <p> Is English your native language? (yes/no) </p>
+        <textarea id="english" rows="1" cols="10" resize="none">
+        </textarea>
         <br>
         <br>
         <p>What do you think this experiment is about?</p>
@@ -186,6 +178,6 @@
         Finish</button></center>
         </div>
 
-        <script src="flowers-rate.js"></script>
+        <script src="flowers-exp.js"></script>
     </body>
 </html>
