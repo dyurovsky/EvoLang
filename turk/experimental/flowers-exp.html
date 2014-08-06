@@ -67,7 +67,7 @@
 
     <!--SECOND INSTRUCTIONS SLIDE-->
     <div class="slide" id="secondInstructions">
-      <p class="block-text"><br>You will see a series of flowers and the way in which the alien would describe those flowers. Every now and then the alien will test your knowledge of the language by showing you a flower without any description. Simple write what you think the correct response is in the input box provided.<br><br>
+      <p class="block-text"><br>You will see a series of flowers and the way in which the alien would describe those flowers. You will also be asked to make a judgment on if the flower is poisonous and you will be provided feedback on whether your judgment was correct. Every now and then the alien will test your knowledge of the language by showing you a flower without any description. Simple write what you think the correct response is in the input box provided.<br><br>
       <b><u>Don't worry if you feel you have not yet mastered the language!</u></b><br><br>
       The most important thing is to maintain good relations with the aliens and give it your best shot. <b><u>Always give an answer.</u></b> That way the aliens will know you are trying. They will go out of their way to try to understand everything you say, and they are very patient. <br><br>
       You will be given a break every 5 minutes or so. <br><br>
@@ -101,17 +101,17 @@
 
     <!--TRAINING SLIDE-->
     <div class="slide" id="training_stage">
-      <table align="center" cellpadding="30">
+      <table align="center" cellpadding="10">
         <tr>
-          <td align="center"><div class="flower_pic" id="train_pic" style="width: 250px; height: 250px;">
+          <td align="center"><div class="flower_pic" id="train_pic" style="width: 200px; height: 200px;">
             <img  src="../images/flower1.jpg"
-            width="250"></div></td>
+            width="200"></div></td>
         </tr>
 
         <tr><td align="center" colspan="2" id="word">Fep<br></td></tr>
-        <tr><td align="center" colspan="2">Poisonous?:
+        <tr><td align="center" colspan="2" id="poison"><b>Poisonous?</b>
           <input type ="radio" name="property" id="yes" onClick="this.blur(); experiment.record_train()" >Poisonous</input>
-          <input type ="radio" name="property" id="no" onClick="this.blur(); experiment.record_train()"></input>Not Poisonous<br></td></tr>
+          <input type ="radio" name="property" id="no" onClick="this.blur(); experiment.record_train()">Not Poisonous</input><br></td></tr>
         <tr><td align="center" colspan="2" id="feedback"><br></td></tr>
       </table>
       <br>
@@ -122,11 +122,11 @@
 
   	<!--TEST SLIDE SLIDE-->
     <div class="slide" id="testing_stage">
-      <table align="center" cellpadding="30">
+      <table align="center" cellpadding="10">
              <tr>
                <td align="center"><div class="flower_pic" id="test_pic">
                  <img  src="../images/flower1.jpg"
-                 width="250"></div></td>
+                 width="200"></div></td>
              </tr>
         <tr><td align="center" colspan="2" id="test_property">Poisonous<br></td></tr>
         <tr><td align="center" colspan="2">Name: <input id="response" type="textbox" value="" style = "width: 200px;"></input><br></td></tr>

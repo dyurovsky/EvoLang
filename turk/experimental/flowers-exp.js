@@ -2,10 +2,9 @@ var trainRounds = 4;
 var numFlowers = 27;
 
 //REALLY want to do this as a file read, don't know how yet
-var words = ['hopa','manehowu','wuneho','panamapo','lemipo','howu','nehowu','nemi','wunene','lipapo','poliho','maho','nehomami','powuma','wumaleli',
-'lilema','lemaho','lemilipo','lepali','lemi','nemine','pohomali','maholi','wupa','wulepami','nepa','mahomine'];
+var words = ['illorida','mea','illordya','mea','illoryda','mea','mea','illorida','mea','mea','illorda','mea','illorida','mea','mea','mea','mea','illorida','mea','illorida','illorida','mea','mea','illoryda','mea','mea','mea'];
 
-var properties = [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var properties = [0,1,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0,1,0,0,1,1,0,0,0,1,0];
 
 // Random order for both images and words
 var order = shuffle(range(1,numFlowers));
@@ -161,7 +160,7 @@ var experiment = {
 				document.getElementById('feedback').innerHTML = "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
-				document.getElementById('feedback').innerHTML = "InCorrect!";
+				document.getElementById('feedback').innerHTML = "Incorrect!";
 				document.getElementById('feedback').style.color='red'
 			}
 		}
@@ -171,7 +170,7 @@ var experiment = {
 				document.getElementById('feedback').innerHTML= "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
-				document.getElementById('feedback').innerHTML = "InCorrect!";
+				document.getElementById('feedback').innerHTML = "Incorrect!";
 				document.getElementById('feedback').style.color='red'
 			}
 		}
@@ -203,7 +202,7 @@ var experiment = {
 	  $("#test_progressbar").progressbar("option", "value",
 	  	  ($("#test_progressbar").progressbar( "option", "value")+1));
 
-  	setTimeout(experiment.blank, 0000);
+  	setTimeout(experiment.blank, 3000);
 	},
 
 

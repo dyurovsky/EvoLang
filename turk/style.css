@@ -65,6 +65,23 @@ button[disabled] {
   font-family: Arial, sans-serif;
 }
 
+#poison {
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="radio"] {
+  margin-top: -2px;
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+#feedback {
+  font-weight: bolder;
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+}
+
 .block-text {
   width: 500px;
   text-align: justify;
