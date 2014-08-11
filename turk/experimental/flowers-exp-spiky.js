@@ -2,7 +2,8 @@ var trainBlocks = 2;
 var numFlowers = 27;
 
 //REALLY want to do this as a file read, don't know how yet
-var words = ['poli','mapopahe','lihopa','pohilo','wumile','mipo','mili','mahowuli','neli','pawu','hopili','lemawu','powuma','lineliwu','wulinema','nepomali','mapopa','wule','nepo','lelipo','palihopa','howuma','mima','pane','polelipo','neneli','popa'];
+var words = ['poli','mapopahe','lihopa','pohilo','wumile','mipo','mili','mahowuli','neli','pawu','hopili','lemawu','powuma','lineliwu','wulinema',
+	'nepomali','mapopa','wule','nepo','lelipo','palihopa','howuma','mima','pane','polelipo','neneli','popa'];
 
 var properties = [0,0,0,1,1,1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,1,1,0,0,0];
 
@@ -74,7 +75,6 @@ var trainWords = [];
 var trainImgs = [];
 var trainProperties = [];
 trainOrders[0] = shuffle(range(1,seenImgs1.length+seenImgs2.length));
-
 trainImgs[0] = trainOrders[0].map(function(elem){return (seenImgs1.concat(seenImgs2)).slice(elem-1,elem);});
 trainWords[0] = trainOrders[0].map(function(elem){return (seenWords1.concat(seenWords2)).slice(elem-1,elem);});
 trainProperties[0] = trainOrders[0].map(function(elem){return properties[(seenProperties1.concat(seenProperties2)).slice(elem-1,elem)];});
@@ -203,7 +203,7 @@ var experiment = {
 		var property = "";
 		if(property_yes) {
 			property = "yes";
-			if(trainProperties[round-1][trainNum] == 1) {
+			if(trainProperties[round-1][trainNum-2] == 1) {
 				document.getElementById('feedback').innerHTML = "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
@@ -213,7 +213,7 @@ var experiment = {
 		}
 		else if(property_no) {
 			property = "no";
-			if(trainProperties[round-1][trainNum] == 0) {
+			if(trainProperties[round-1][trainNum-2] == 0) {
 				document.getElementById('feedback').innerHTML= "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
