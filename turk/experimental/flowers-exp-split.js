@@ -203,7 +203,7 @@ var experiment = {
 
 		var lastTrainNum = trainNum;
 
-		if(lastTrainNum == 1)
+		if(lastTrainNum <= 1)
 			lastTrainNum = (trainTrials/2) - 1;
 		else
 			lastTrainNum = trainNum-2;
