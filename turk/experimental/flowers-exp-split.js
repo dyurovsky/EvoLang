@@ -203,10 +203,10 @@ var experiment = {
 
 		var lastTrainNum = trainNum;
 
-		if(lastTrainNum == 0)
+		if(lastTrainNum == 1)
 			lastTrainNum = (trainTrials/2) - 1;
 		else
-			lastTrainNum = trainNum -2;
+			lastTrainNum = trainNum-2;
 
 		var property = "";
 		if(property_yes) {
@@ -246,7 +246,7 @@ var experiment = {
 	  $("#test_progressbar").progressbar("option", "value",
 	  	  ($("#test_progressbar").progressbar( "option", "value")+1));
 
-  	setTimeout(experiment.blank, 000);
+  	setTimeout(experiment.blank, 300);
 	},
 
 
