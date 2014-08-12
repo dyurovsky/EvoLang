@@ -87,7 +87,7 @@ trainProperties[1] = trainOrders[1].map(function(elem){return properties[(seenPr
 
 // some bookkeeping
 var block = 1;
-var round = 1;
+var round = 2;
 var lastBlock = 1;
 
 // bookkeeping to know when to switch trial types
@@ -204,7 +204,7 @@ var experiment = {
 		var property = "";
 		if(property_yes) {
 			property = "yes";
-			if(trainProperties[round-1][trainNum-2] == 1) {
+			if(trainProperties[block-1][trainNum-2] == 1) {
 				document.getElementById('feedback').innerHTML = "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
@@ -214,7 +214,7 @@ var experiment = {
 		}
 		else if(property_no) {
 			property = "no";
-			if(trainProperties[round-1][trainNum-2] == 0) {
+			if(trainProperties[block-1][trainNum-2] == 0) {
 				document.getElementById('feedback').innerHTML= "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {

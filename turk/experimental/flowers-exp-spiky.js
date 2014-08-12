@@ -203,7 +203,7 @@ var experiment = {
 		var property = "";
 		if(property_yes) {
 			property = "yes";
-			if(trainProperties[round-1][trainNum-2] == 1) {
+			if(trainProperties[block-1][trainNum-2] == 1) {
 				document.getElementById('feedback').innerHTML = "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
@@ -213,7 +213,7 @@ var experiment = {
 		}
 		else if(property_no) {
 			property = "no";
-			if(trainProperties[round-1][trainNum-2] == 0) {
+			if(trainProperties[block-1][trainNum-2] == 0) {
 				document.getElementById('feedback').innerHTML= "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
