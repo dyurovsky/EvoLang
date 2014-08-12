@@ -87,7 +87,7 @@ trainProperties[1] = trainOrders[1].map(function(elem){return properties[(seenPr
 
 // some bookkeeping
 var block = 1;
-var round = 2;
+var round = 1;
 var lastBlock = 1;
 
 // bookkeeping to know when to switch trial types
@@ -201,10 +201,18 @@ var experiment = {
 		var property_yes = document.getElementById('yes').checked;
 		var property_no = document.getElementById('no').checked;
 
+		var lastTrainNum = trainNum;
+
+		if(lastTrainNum == 0)
+			lastTrainNum = (trainTrials/2) - 1;
+		else
+			lastTrainNum = trainNum -2;
+
 		var property = "";
 		if(property_yes) {
 			property = "yes";
-			if(trainProperties[block-1][trainNum-2] == 1) {
+			if(trainNum == 0)
+			if(trainProperties[block-1][lastTrainNum] == 1) {
 				document.getElementById('feedback').innerHTML = "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
@@ -214,7 +222,7 @@ var experiment = {
 		}
 		else if(property_no) {
 			property = "no";
-			if(trainProperties[block-1][trainNum-2] == 0) {
+			if(trainProperties[block-1][lastTrainNum] == 0) {
 				document.getElementById('feedback').innerHTML= "Correct!";
 				document.getElementById('feedback').style.color='green'
 			}else {
@@ -238,7 +246,7 @@ var experiment = {
 	  $("#test_progressbar").progressbar("option", "value",
 	  	  ($("#test_progressbar").progressbar( "option", "value")+1));
 
-  	setTimeout(experiment.blank, 3000);
+  	setTimeout(experiment.blank, 000);
 	},
 
 
