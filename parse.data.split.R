@@ -60,5 +60,5 @@ test.data <- long.data %>%
   select(image,response,property)
   
 # Write words for new participant
-write(paste(test.data$response,collapse=","),
+write(paste("\"",paste(test.data$response,collapse="\",\""),"\"",sep=""),
       file = paste("out",Sys.Date(),"csv",sep="."))
